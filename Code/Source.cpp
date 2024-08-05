@@ -10,7 +10,7 @@ void nhap_Chuoi(char a[])
 
 void xuat_Chuoi(char a[])
 {
-	printf("Chuoi vua nhap la: %s", a);
+	printf("Chuoi vua nhap la:%s", a);
 }
 
 void demKhoangTrang(char a[])
@@ -26,12 +26,38 @@ void demKhoangTrang(char a[])
 
 	printf("So luong khoang trang trong chuoi la: %d", dem);
 }
+
+void xoaPhanTu(char a[], int vitri)
+{
+	for (int i = vitri; i < strlen(a); i++)
+	{
+		a[i]=a[i+1];
+	}
+}
+
+void xoa_KhoangTrangThua(char a[])
+{
+	for (int i = 0; i < strlen(a); i++)
+	{
+		if (a[i]==' ')
+		{
+			while (a[i+1]==' ')
+			{
+				xoaPhanTu(a,i);
+			}
+		}
+	}
+}
 int main()
 {
 	char a[MAXSIZE];
 	nhap_Chuoi(a);
 	xuat_Chuoi(a);
+	printf("\n---------------------------------------\n");
 	demKhoangTrang(a);
+	printf("\n---------------------------------------\n");
+	xoa_KhoangTrangThua(a);
+	xuat_Chuoi(a);
 	getch();
 	return 0;
 }
