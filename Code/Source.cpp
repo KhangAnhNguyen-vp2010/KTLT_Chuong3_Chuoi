@@ -71,20 +71,37 @@ void xoa_KhoangTrangThua(char a[])
 
 void chuyenDoi_Chuoi(char a[])
 {
-	// KI TU DAU
-	a[0]-=32;
+	if (a[0] >=97 && a[0] <= 122)
+	{
+		a[0]-=32;
+	}
 
 	for (int i = 1; i < strlen(a); i++)
 	{
 		if (a[i-1]==' ')
 		{
-			a[i]-=32;
+			if (a[i]>=97 && a[i] <= 122)
+			{
+				a[i]-=32;
+			}
 		}
 		else if (a[i] >= 65 && a[i] <= 90)
 		{
 			a[i]+=32;
 		}
 	}
+}
+
+void timKiemChuoi(char a[])
+{
+	char b[MAXSIZE];
+	printf("Nhap chuoi can tim:");
+	gets(b);
+	if (strstr(a,b)==NULL)
+	{
+		printf("Khong tim thay chuoi '%s' trong chuoi '%s'", b, a);
+	}
+	else printf("Da tim thay chuoi '%s' trong chuoi '%s'", b, a);
 }
 
 int main()
@@ -100,6 +117,8 @@ int main()
 	printf("\n---------------------------------------\n");
 	chuyenDoi_Chuoi(a);
 	xuat_Chuoi(a);
+	printf("\n---------------------------------------\n");
+	timKiemChuoi(a);
 	getch();
 	return 0;
 }
