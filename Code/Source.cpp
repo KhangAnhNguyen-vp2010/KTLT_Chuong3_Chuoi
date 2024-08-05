@@ -104,6 +104,26 @@ void timKiemChuoi(char a[])
 	else printf("Da tim thay chuoi '%s' trong chuoi '%s'", b, a);
 }
 
+void cat_Chuoi(char a[])
+{
+	char str1[MAXSIZE];
+	int j=0;
+	for (int i = strlen(a)-1; i > 0; i--)
+	{
+		if (a[i] != ' ')
+		{
+			str1[j]=a[i];
+			xoaPhanTu(a,i);
+			j++;
+		}
+		else break;
+	}
+	str1[j]= '\0';
+
+	printf("Chuoi ho lot:%s\n", a);
+	printf("Chuoi ten:%s", strrev(str1));
+}
+
 int main()
 {
 	char a[MAXSIZE];
@@ -119,6 +139,8 @@ int main()
 	xuat_Chuoi(a);
 	printf("\n---------------------------------------\n");
 	timKiemChuoi(a);
+	printf("\n---------------------------------------\n");
+	cat_Chuoi(a);
 	getch();
 	return 0;
 }
