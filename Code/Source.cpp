@@ -35,6 +35,16 @@ void xoaPhanTu(char a[], int vitri)
 	}
 }
 
+void xoa_KhoangTrangDau(char a[])
+{
+	xoaPhanTu(a,0);
+}
+void xoa_KhoangTrangCuoi(char a[])
+{
+	int n = strlen(a)-1;
+	xoaPhanTu(a,n);
+}
+
 void xoa_KhoangTrangThua(char a[])
 {
 	for (int i = 0; i < strlen(a); i++)
@@ -47,7 +57,36 @@ void xoa_KhoangTrangThua(char a[])
 			}
 		}
 	}
+
+	if (a[0]==' ')
+	{
+		xoa_KhoangTrangDau(a);
+	}
+	int n = strlen(a)-1;
+	if (a[n]==' ')
+	{
+		xoa_KhoangTrangCuoi(a);
+	}
 }
+
+void chuyenDoi_Chuoi(char a[])
+{
+	// KI TU DAU
+	a[0]-=32;
+
+	for (int i = 1; i < strlen(a); i++)
+	{
+		if (a[i-1]==' ')
+		{
+			a[i]-=32;
+		}
+		else if (a[i] >= 65 && a[i] <= 90)
+		{
+			a[i]+=32;
+		}
+	}
+}
+
 int main()
 {
 	char a[MAXSIZE];
@@ -57,6 +96,9 @@ int main()
 	demKhoangTrang(a);
 	printf("\n---------------------------------------\n");
 	xoa_KhoangTrangThua(a);
+	xuat_Chuoi(a);
+	printf("\n---------------------------------------\n");
+	chuyenDoi_Chuoi(a);
 	xuat_Chuoi(a);
 	getch();
 	return 0;
