@@ -40,6 +40,27 @@ void XoaTu(char* a, char* x) {
 		strcpy(a, temp);
 	}
 }
+void DemKiTu(char* a) {
+	int n = strlen(a);
+	for (int i = 0; i < n; i++)
+	{
+		int KT = 1;
+		for (int j = i - 1; j >= 0; j--) {
+			if (a[i] == a[j]) {
+				KT = 0;
+				break;
+			}
+		}
+		if (KT == 1) {
+			int dem = 0;
+			for (int k = 0; k < n; k++)
+			{
+				if (a[i] == a[k]) dem++;
+			}
+			printf("\nKy tu '%c': %d", a[i], dem);
+		}
+	}
+}
 int main() {
 	char a[100], x[100], x1[100];
 	int index;
@@ -47,9 +68,5 @@ int main() {
 	fgets(a, sizeof(a), stdin);
 	XoaXuongDong(a);
 	printf("Chuoi ban vua nhap la:%s", a);
-	printf("\nNhap chuoi can xoa:");
-	fgets(x1, sizeof(x1), stdin);
-	XoaXuongDong(x1);
-	XoaTu(a, x1);
-	printf("\nChuoi sau khi xoa:%s", a);
+	DemKiTu(a);
 }
