@@ -61,6 +61,30 @@ void DemKiTu(char* a) {
 		}
 	}
 }
+void DemKTXuatHienMax(char* a) {
+	int n = strlen(a);
+	int max = 0;
+	char temp = '\0';
+	for (int i = 0; i < n; i++)
+	{
+		int KT = 1;
+		for (int j = i - 1; j >= 0; j--) {
+			if (a[i] == a[j]) {
+				KT = 0;
+				break;
+			}
+		}
+		if (KT == 1) {
+			int dem = 0;
+			for (int k = 0; k < n; k++)
+			{
+				if (a[i] == a[k]) dem++;
+			}
+			if (dem > max) { max = dem; temp = a[i]; }
+		}
+	}
+	printf("\nKi tu '%c' xuat hien nhieu nhat :%d lan", temp, max);
+}
 int main() {
 	char a[100], x[100], x1[100];
 	int index;
@@ -69,4 +93,5 @@ int main() {
 	XoaXuongDong(a);
 	printf("Chuoi ban vua nhap la:%s", a);
 	DemKiTu(a);
+	DemKTXuatHienMax(a);
 }
