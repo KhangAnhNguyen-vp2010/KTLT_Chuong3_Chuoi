@@ -27,6 +27,19 @@ void XoaXuongDong(char a[]) {
 		if (a[i] == '\n') a[i] = '\0';
 	}
 }
+void XoaTu(char* a, char* x) {
+	char temp[100];
+	char* p;
+	int x_len = strlen(x);
+	temp[0] = '\0';
+	while ((p = strstr(a, x)) != NULL)
+	{
+		strncpy(temp, a, p - a);
+		temp[p - a] = '\0';
+		strcat(temp, p + x_len);
+		strcpy(a, temp);
+	}
+}
 int main() {
 	char a[100], x[100], x1[100];
 	int index;
@@ -34,9 +47,9 @@ int main() {
 	fgets(a, sizeof(a), stdin);
 	XoaXuongDong(a);
 	printf("Chuoi ban vua nhap la:%s", a);
-	printf("\nMoi ban nhap chuoi can them:");
-	fgets(x, sizeof(x), stdin);
-	XoaXuongDong(x);
-	ThemTu(a, x, index);
-	printf("\nChuoi da them:%s", a);
+	printf("\nNhap chuoi can xoa:");
+	fgets(x1, sizeof(x1), stdin);
+	XoaXuongDong(x1);
+	XoaTu(a, x1);
+	printf("\nChuoi sau khi xoa:%s", a);
 }
